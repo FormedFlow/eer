@@ -173,7 +173,7 @@ def logout_user(request):
 def profile_view(request):
     student = Student.objects.get(user=request.user)
     print(student)
-    lessons = Lesson.objects.all()
+    lessons = Lesson.objects.all().order_by('pk')
     progress = []
     grades = []
     have_passed = []
