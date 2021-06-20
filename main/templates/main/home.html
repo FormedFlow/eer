@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block main %}
+<div class="container-xxl mt-4">
+    <div class="row gy-4">
+        <div class="col-7 text-start align-self-center">
+            <h1>Разработка и развертывание приложения на Python</h1>
+            <p class="lead">Добро пожаловать на электронный ресурс, представляющий
+                пошаговое руководство к разработке и развертыванию веб-приложения на Python.</p>
+        </div>
+        <div class="col-2 offset-1">
+            <a href="https://www.djangoproject.com/">
+                <img src="{% static 'main/img/django-favicon.ico' %}"
+                     class="img-thumbnail" title="Веб-фреймворк Django"></a>
+        </div>
+        <div class="col-2">
+            <a href="https://getbootstrap.com/">
+                <img src="{% static 'main/img/bootstrap-logo-2.png' %}"
+                     class="img-thumbnail" title="CSS-фреймворк Bootstrap 5"></a>
+        </div>
+        <div class="col-7 text-start align-self-center">
+            <p class="lead">В данном курсе будут рассмотрены основные аспекты
+                веб-разработки с применением фреймворка Django: маршрутизация, модели, формы,
+                сигналы и прочие стандартные средства фреймворка. Уроки сопровождаются тестами
+                для закрепления материала. Для прохождения тестов необходимо зарегистрироваться.</p>
+        </div>
+        <div class="col-2 offset-1">
+            <a href="https://www.python.org/">
+                <img src="{% static 'main/img/python-logo.png' %}"
+                     class="img-thumbnail" title="Python"></a>
+        </div>
+        <div class="col-2">
+            <a href="https://www.mysql.com/">
+                <img src="{% static 'main/img/mysql-logo.png' %}"
+                     class="img-thumbnail" title="СУБД MySQL"></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <a class="btn btn-primary btn-lg" href="{% url 'registration' %}">
+                Зарегистрироваться
+            </a>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-outline-primary btn-lg" href="{% url 'lessons' %}">
+                К урокам
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

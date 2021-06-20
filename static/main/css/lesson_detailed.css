@@ -1,0 +1,36 @@
+iframe {
+    display: block;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/*input[type="checkbox"] {*/
+/*    */
+/*}*/
+
+form ul {
+    padding-left: 0;
+}
+
+.forms-wrapper {
+    margin-bottom: 2rem;
+    padding: 0rem 2rem 1rem 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 2.5rem;
+    background-color: rgba(255,239,34,0.35)
+}
+
+.my-button {
+    margin-left: 2rem;
+}
+
+li.form-item {
+    margin-top: 2rem;
+}
+
+form ul li {
+    margin-bottom: 0.5rem;
+}
+

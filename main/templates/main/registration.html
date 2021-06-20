@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="{% static 'main/css/login.css' %}">
+{% endblock %}
+
+{% block main %}
+
+<!--    <form method="post">-->
+<!--        {% csrf_token %}-->
+<!--        {% for field in form %}-->
+<!--            <p><label for="{{ field.id_for_label }}">{{ field.label }}: </label>{{ field }}</p>-->
+<!--            <div>{{ field.errors }}</div>-->
+<!--        {% endfor %}-->
+<!--        <button type="submit">К бою!</button>-->
+<!--        {% if request.user.is_authenticated %}-->
+<!--        <p>{{ user.username }}</p>-->
+<!--        {% endif %}-->
+<!--    </form>-->
+<div class="login">
+    <div class="login-triangle"></div>
+
+    <h2 class="login-header">Регистрация</h2>
+
+    <form class="login-container" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <p><label for="{{ field.id_for_label }}">{{ field.label }}: </label>{{ field }}</p>
+        <div>{{ field.errors }}</div>
+        {% endfor %}
+        <p><input type="submit" value="Регистрация"></p>
+    </form>
+</div>
+
+{% endblock %}
