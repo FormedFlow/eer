@@ -111,7 +111,7 @@ def lesson_detail(request, lesson_id):
 
     else:
         for question in questions:
-            answers = Answer.objects.filter(question=question)
+            # answers = Answer.objects.filter(question=question)
             if question.type == 'text_answer':
                 quiz_forms.append(TextAnswerForm(label=question.text, prefix=next(prefix_gen)))
             if question.type == 'single_choice':

@@ -31,10 +31,10 @@ class MultipleChoicesForm(forms.Form):
                                             widget=CheckboxSelectMultiple())
 
     def __init__(self, *args, **kwargs):
-        outer_question = kwargs.pop('question')
         super(MultipleChoicesForm, self).__init__(*args, **kwargs)
+        outer_question = kwargs.pop('question')
         self.fields['answer'].label = outer_question.text
-        self.fields['answer'].queryset = Answer.objects.filter(question=outer_question)
+        # self.fields['answer'].queryset = Answer.objects.filter(question=outer_question)
 
 
 class SingleChoiceForm(forms.Form):
