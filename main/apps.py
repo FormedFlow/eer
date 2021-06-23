@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 class MainConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'main'
+    verbose_name = 'Главное приложение'
 
     def ready(self):
         # importing model classes

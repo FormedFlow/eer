@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'EER.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'optional': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'eerdata',
         'USER': 'based',
@@ -87,13 +87,13 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306'
     },
-    'default': {
+    'optional': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ddakt6f09f6ckq',
         'USER': 'nbkegaofgyswjr',
         'PASSWORD': '4d9cbbed89e43e10aea435a187531b5b5b172f508fe5b7b2730faf17d9ab7dab',
         'HOST': 'ec2-35-170-85-206.compute-1.amazonaws.com',
-        'PORT': 5432
+        'PORT': '5432'
     }
 }
 

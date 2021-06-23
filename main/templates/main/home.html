@@ -40,13 +40,21 @@
         </div>
     </div>
     <div class="row">
+        {% if not request.user.is_authenticated %}
         <div class="col-auto">
             <a class="btn btn-primary btn-lg" href="{% url 'registration' %}">
                 Зарегистрироваться
             </a>
         </div>
+        {% endif %}
         <div class="col-auto">
-            <a class="btn btn-outline-primary btn-lg" href="{% url 'lessons' %}">
+            <a class="btn
+            {% if request.user.is_authenticated %}
+            btn-primary
+            {% else %}
+            btn-outline-primary
+            {% endif %}
+            btn-lg" href="{% url 'lessons' %}">
                 К урокам
             </a>
         </div>

@@ -27,7 +27,7 @@ class ContactsView(DataMixin, TemplateView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        added_context = self.get_user_context()
+        added_context = self.get_user_context(title='Контакты')
         return {**context, **added_context}
 
 
@@ -50,19 +50,6 @@ class LessonsList(DataMixin, ListView):
         added_context = self.get_user_context(title='Уроки')
         return {**context, **added_context}
 
-
-# class LessonDetail(DataMixin, DetailView):
-#     model = Lesson
-#     pk_url_kwarg = 'lesson_id'
-#     context_object_name = 'lesson'
-#     template_name = 'main/lesson_detailed.html'
-#     time = datetime.now()
-#
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         print(self.kwargs['lesson_id'])
-#         added_context = self.get_user_context()
-#         return {**context, **added_context}
 
 def lesson_detail(request, lesson_id):
     lesson = Lesson.objects.get(pk=lesson_id)
@@ -151,6 +138,11 @@ class UserRegistration(DataMixin, CreateView):
         login(self.request, user)
         return redirect('home')
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('profile', permanent=True)
+        return super(UserRegistration, self).dispatch(request, *args, **kwargs)
+
 
 class LoginUser(DataMixin, LoginView):
     form_class = LoginUserForm
@@ -164,6 +156,11 @@ class LoginUser(DataMixin, LoginView):
         added_context = self.get_user_context(title='Вход')
         return {**context, **added_context}
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('profile', permanent=True)
+        return super(LoginUser, self).dispatch(request, *args, **kwargs)
+
 
 def logout_user(request):
     logout(request)
@@ -171,6 +168,8 @@ def logout_user(request):
 
 
 def profile_view(request):
+    if not request.user.is_authenticated:
+        return redirect('login', permanent=True)
     student = Student.objects.get(user=request.user)
     print(student)
     lessons = Lesson.objects.all().order_by('pk')

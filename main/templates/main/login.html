@@ -1,6 +1,8 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
+{% block title %}{{ title }}{% endblock %}
+
 {% block css %}
 <link type="text/css" rel="stylesheet" href="{% static 'main/css/login.css' %}">
 {% endblock %}
