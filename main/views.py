@@ -202,7 +202,8 @@ def profile_view(request):
     lessons_progress = list(zip(lessons, progress, grades, have_passed))
     for item in lessons_progress:
         print(item[0].get_absolute_url())
-    context = {'lessons': lessons_progress, 'menu': menu}
+    title = 'Личный профиль'
+    context = {'lessons': lessons_progress, 'menu': menu, 'title': title}
     return render(request, 'main/profile.html', context=context)
 
 
