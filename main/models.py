@@ -70,9 +70,15 @@ class Student(models.Model):
 
 
 class Progress(models.Model):
-    student = models.ForeignKey('Student', on_delete=models.CASCADE)
-    question = models.ForeignKey('Question', on_delete=models.CASCADE)
-    right = models.BooleanField()
+    student = models.ForeignKey('Student', on_delete=models.CASCADE,
+                                verbose_name='Студент')
+    question = models.ForeignKey('Question', on_delete=models.CASCADE,
+                                 verbose_name='Вопрос')
+    right = models.BooleanField(verbose_name='Ответил верно')
+
+    class Meta:
+        verbose_name = 'Ответы пользователей'
+        verbose_name_plural = 'Ответы пользователей'
 
     def __str__(self):
         return str(self.student) + ' - ' + str(self.question)

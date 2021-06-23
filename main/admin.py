@@ -3,7 +3,14 @@ from django.contrib import admin
 # Register your models here.
 
 from .models import *
-admin.site.register(Progress)
+
+
+class ProgressAdmin(admin.ModelAdmin):
+    list_display = ('student', 'question', 'right')
+    search_fields = ('student__user__username', 'question__text')
+
+
+admin.site.register(Progress, ProgressAdmin)
 
 
 class LessonAdmin(admin.ModelAdmin):
