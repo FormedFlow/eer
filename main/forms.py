@@ -31,10 +31,10 @@ class MultipleChoicesForm(forms.Form):
                                             widget=CheckboxSelectMultiple())
 
     def __init__(self, *args, **kwargs):
-        super(MultipleChoicesForm, self).__init__(*args, **kwargs)
         outer_question = kwargs.pop('question')
+        super(MultipleChoicesForm, self).__init__(*args, **kwargs)
         self.fields['answer'].label = outer_question.text
-        # self.fields['answer'].queryset = Answer.objects.filter(question=outer_question)
+        self.fields['answer'].queryset = Answer.objects.filter(question=outer_question)
 
 
 class SingleChoiceForm(forms.Form):
@@ -48,15 +48,10 @@ class SingleChoiceForm(forms.Form):
         super(SingleChoiceForm, self).__init__(*args, **kwargs)
         self.fields['answer'].label = outer_question.text
         self.fields['answer'].queryset = Answer.objects.filter(question=outer_question)
-        # label = kwargs.pop('label')
-        # queryset = kwargs.pop('queryset')
-        # super(SingleChoiceForm, self).__init__(*args, **kwargs)
-        # self.fields['answer_single'].label = label
-        # self.fields['answer_single'].queryset = queryset
 
 
 class TextAnswerForm(forms.Form):
-    answer= forms.CharField(max_length=255, widget=TextInput(attrs={
+    answer = forms.CharField(max_length=255, widget=TextInput(attrs={
         'class': 'form-control',
     }))
 

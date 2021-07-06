@@ -10,3 +10,4 @@ class DataMixin:
         context = kwargs
         context['menu'] = menu
         return context
+
